@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.ufg.inf.fabrica.mural.central.dominio.credenciais.entity;
+package br.ufg.inf.fabrica.mural.central.dominio;
 
 /**
  *

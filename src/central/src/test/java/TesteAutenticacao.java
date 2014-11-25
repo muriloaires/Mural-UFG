@@ -1,6 +1,5 @@
 
-import br.ufg.inf.fabrica.mural.central.dominio.credenciais.AutenticadorCAS;
-import br.ufg.inf.fabrica.mural.central.dominio.credenciais.entity.Usuario;
+import br.ufg.inf.fabrica.mural.central.dominio.UsuarioAdministrador;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -18,20 +17,18 @@ import org.junit.Test;
  */
 public class TesteAutenticacao{
 
-    public static Usuario usuarioTeste;
+    public static UsuarioAdministrador usuarioTeste;
     
     @BeforeClass
     public static void carregaInfosIniciais(){
-        usuarioTeste = new Usuario();
-        usuarioTeste.setId(1l);
+        usuarioTeste = new UsuarioAdministrador();
         usuarioTeste.setLogin("admin");
         usuarioTeste.setSenha("admin");
-        usuarioTeste.setAdministrador(true);
     }
     
     @Test
     public void validarCredenciaisTest(){
-        long resultado = new AutenticadorCAS().validarCredenciais(usuarioTeste);
-        Assert.assertEquals(resultado, AutenticadorCAS.SOLICITACAO_ATENDIDA_SUCESSO);
+        boolean resultado = usuarioTeste.validarCredencial(usuarioTeste.getLogin(), usuarioTeste.getSenha());
+        Assert.assertEquals(resultado, true);
     }
 }

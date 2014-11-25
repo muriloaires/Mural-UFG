@@ -6,12 +6,12 @@
 package br.ufg.inf.fabrica.mural.central.persistencia;
 
 
-import br.ufg.inf.fabrica.mural.central.dominio.credenciais.entity.Usuario;
+
 
 /**
  *
  * @author Murilo
  */
-public interface UsuarioDAO {
-    public boolean validarUsuario(Usuario usuario);
+public interface DaoUsuarioAdministrador {
+    public boolean validarCredencial(String login, String senha);
 }
