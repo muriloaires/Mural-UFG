@@ -5,6 +5,8 @@
  */
 package br.ufg.inf.fabrica.mural.central.persistencia;
 
+import br.ufg.inf.fabrica.mural.central.dominio.UsuarioAdministrador;
+
 
 
 
@@ -13,5 +15,5 @@ package br.ufg.inf.fabrica.mural.central.persistencia;
  * @author Murilo
  */
 public interface DaoUsuarioAdministrador {
-    public boolean validarCredencial(String login, String senha);
+    public UsuarioAdministrador buscar(String login, String senha);
 }

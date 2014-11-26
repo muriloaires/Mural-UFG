@@ -2,6 +2,10 @@ package br.ufg.inf.fabrica.mural.central.dominio;
 
 
 import br.ufg.inf.fabrica.mural.central.persistencia.UsuarioAdministradorDAOimpl;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -12,15 +16,24 @@ import br.ufg.inf.fabrica.mural.central.persistencia.UsuarioAdministradorDAOimpl
  *
  * @author Murilo
  */
+@Entity
+@Table (name = "USUARIO_ADMINISTRADOR")
 public class UsuarioAdministrador {
     
     public static final long CREDENCIAIS_NAO_INFORMADAS = 20008;
     public static final long CREDENCIAIS_INVALIDAS = 20002;
     public static final long SOLICITACAO_ATENDIDA_SUCESSO = 20000;
     
-    private UsuarioDAOstub usuarioDAOimpl;
+ 
+    
+    @Column(nullable = false, name = "login")
+    @Id
     private String login;
+    
+    @Column(nullable = false, name = "senha")
     private String senha;
+     
+    @Column(nullable = false, name = "estado")
     private boolean estado;
 
     public String getLogin() {
@@ -48,7 +61,14 @@ public class UsuarioAdministrador {
     }
     
     public boolean validarCredencial(String login, String senha){
+        boolean isUsuarioValido = false;
         UsuarioAdministradorDAOimpl usuarioDAOimpl = new UsuarioAdministradorDAOimpl();
-        return usuarioDAOimpl.validarCredencial(login, senha);
+        UsuarioAdministrador testeAdministrador = usuarioDAOimpl.buscar(login, senha);
+       
+        
+        if (testeAdministrador.getLogin().equals(login) && testeAdministrador.getSenha().equals(senha)) {
+            isUsuarioValido = true;
+        }
+        return isUsuarioValido;
     }
 }

@@ -24,6 +24,7 @@ public class TesteAutenticacao{
         usuarioTeste = new UsuarioAdministrador();
         usuarioTeste.setLogin("admin");
         usuarioTeste.setSenha("admin");
+        usuarioTeste.setEstado(true);
     }
     
     @Test
